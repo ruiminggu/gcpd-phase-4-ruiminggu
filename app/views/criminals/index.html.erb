@@ -1,0 +1,11 @@
+<h1>Criminals</h1>
+
+<h2>Active Criminals</h2>
+<% @criminals.each do |criminal| %>
+  <p><%= link_to criminal.first_name + ' ' + criminal.last_name, criminal %></p>
+<% end %>
+
+<h2>Enhanced Powers</h2>
+<% @enhanced_powers.each do |criminal| %>
+  <p><%= link_to criminal.first_name + ' ' + criminal.last_name, criminal %></p>
+<% end %>

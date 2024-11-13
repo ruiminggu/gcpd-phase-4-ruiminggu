@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GCPD Management System</title>
+    <%= csrf_meta_tags %>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Bitter|Josefin+Sans|Nunito|Varela+Round" %>
+    <%= javascript_pack_tag "application" %>
+  </head>
+
+  <body>
+    <header>
+      <%= render :partial => "partials/topbar" %>
+      <%= render :partial => "partials/nav" %>
+      
+    </header>
+    <main>
+      <% flash.each do |message_type, message| %>
+        <p><%= message %></p >
+      <% end %>
+
+      <%= yield %>
+
+      <%= render :partial => "partials/footer" %>
+    </main>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>   
+  </body>
+</html>

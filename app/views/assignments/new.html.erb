@@ -1,0 +1,22 @@
+<!-- app/views/assignments/new.html.erb -->
+<h4>New Assignment</h4>
+<h5>For Officer: <%= @officer.name %></h5>
+
+<%= form_for [@assignment] do |f| %>  
+  <div class="field">
+    <%=f.hidden_field :officer_id, value: @officer.id %>
+  </div>
+  <div class="field">
+    <%= f.label :investigation_id, "Select Investigation to Assign" %><br>
+    <%= f.collection_select :investigation_id, @officer_investigations, :id, :title, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+ 

@@ -1,0 +1,14 @@
+<h4>Active Officers in GCPD</h4>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Rank</th>
+  </tr>
+  <% @active_officers.each do |officer| %>
+    <tr>
+      <td><%= link_to "#{officer.last_name}, #{officer.first_name}", officer_path(officer) %></td>
+      <td><%= officer.rank %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @active_officers %>

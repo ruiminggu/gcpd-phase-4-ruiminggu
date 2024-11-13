@@ -1,0 +1,9 @@
+<%= form_with model: @investigation, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.submit %>
+<% end %>

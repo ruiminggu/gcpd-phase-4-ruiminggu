@@ -1,0 +1,7 @@
+<h1><%= @criminal.first_name %> <%= @criminal.last_name %></h1>
+<p>AKA: <%= @criminal.aka || "N/A" %></p>
+<p>Convicted Felon: <%= @criminal.convicted_felon ? "Yes" : "No" %></p>
+<p>Enhanced Powers: <%= @criminal.enhanced_powers ? "Yes" : "No" %></p>
+
+<%= link_to 'Edit', edit_criminal_path(@criminal) %> |
+<%= link_to 'Back', criminals_path %>

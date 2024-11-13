@@ -1,0 +1,15 @@
+<h1>New Crime</h1>
+
+<%= form_with model: @crime, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+  <%= form.submit "Create Crime" %>
+<% end %>

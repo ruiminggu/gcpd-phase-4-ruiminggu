@@ -1,0 +1,43 @@
+<div class="officer-info card">
+  <h4>Officer Information for <%= @officer.first_name %> <%= @officer.last_name %></h4>
+  <div class="info-details">
+    <p><strong>Current unit:&nbsp;&nbsp; <%= @officer.unit.name %></p>
+    <p><strong>Current rank:&nbsp;&nbsp; <%= @officer.rank %></p>
+    <p><strong>Active duty?&nbsp;&nbsp; <%= @officer.active ? 'Yes' : 'No' %></p>
+    <p><strong>SSN:&nbsp;&nbsp; <%= "#{@officer.ssn[0..2]}-#{@officer.ssn[3..4]}-#{@officer.ssn[5..-1]}" %></p>
+  </div>
+</div>
+
+<div class="assignments">
+  <div id="current_assignments" class="card">
+    <% if @officer.assignments.where(end_date: nil).exists? %>
+      <h4>Current Assignments</h4>
+      <ul>
+        <% @officer.assignments.where(end_date: nil).each do |assignment| %>
+          <li>
+            <p><%= assignment.investigation.title %> (Starting: <%= assignment.start_date.strftime("%m/%d/%Y") %>)</p>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No current assignments.</p>
+    <% end %>
+  </div>
+
+  <div id="past_assignments" class="card">
+    <% if @officer.assignments.where.not(end_date: nil).exists? %>
+      <h4>Past Assignments</h4>
+      <ul>
+        <% @officer.assignments.where.not(end_date: nil).each do |assignment| %>
+          <li>
+            <p><%= assignment.investigation.title %> (Ending: <%= assignment.end_date.strftime("%m/%d/%Y") %>)</p>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No past assignments.</p>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Add a new assignment', new_officer_assignment_path(@officer), class: "btn add-assignment-btn" %>

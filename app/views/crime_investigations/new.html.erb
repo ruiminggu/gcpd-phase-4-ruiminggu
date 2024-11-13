@@ -1,0 +1,6 @@
+<!-- app/views/crime_investigations/new.html.erb -->
+<%= form_with model: @crime_investigation, url: crime_investigations_path do |form| %>
+  <%= form.collection_select :crime_id, @crimes_list, :id, :name, prompt: "Select a Crime" %>
+  <%= form.hidden_field :investigation_id, value: @investigation.id %>
+  <%= form.submit "Add Crime to Investigation" %>
+<% end %>

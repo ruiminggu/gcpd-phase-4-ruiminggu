@@ -1,0 +1,11 @@
+<h1>Crimes</h1>
+
+<h2>Active Crimes</h2>
+<% @active_crimes.each do |crime| %>
+  <p><%= crime.name %></p>
+<% end %>
+
+<h2>Inactive Crimes</h2>
+<% @inactive_crimes.each do |crime| %>
+  <p><%= crime.name %></p>
+<% end %>
